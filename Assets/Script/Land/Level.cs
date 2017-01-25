@@ -3,19 +3,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
-public class Level {
 
-	private Array<Edge> edges;
-	private Array<Tile> tiles;
-	private Vector2 cameraDefaultPosition;
+namespace Baillyje.Land
+{
+	public class Level {
 
-	// Use this for initialization
-	void Start () {
-		
+		public Edge[] edges;
+		private Tile[] tiles;
+		private Vector2 cameraDefaultPosition;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }
