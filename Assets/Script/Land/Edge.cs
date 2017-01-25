@@ -6,8 +6,7 @@ namespace Baillyje.Land
 {
 	public class Edge {
 
-		public Vector2 point1;
-		public Vector2 point2;
+		public List<Vector2> points;
 
 		public bool isCameraBlocker;
 
@@ -16,10 +15,9 @@ namespace Baillyje.Land
 		private Vector2 levelDestinationCoordinate;
 		private Vector2 heroDestinationCoordinate;
 
-		public Edge(Vector2 pPoint1, Vector2 pPoint2, bool pIsCameraBlocker)
+		public Edge(List<Vector2> pPoints, bool pIsCameraBlocker)
         {
-			point1 = pPoint1;
-			point2 = pPoint2;
+			points = pPoints;
 			isCameraBlocker = pIsCameraBlocker;
         }
 
