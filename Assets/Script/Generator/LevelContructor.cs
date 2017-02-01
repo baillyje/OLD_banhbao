@@ -5,26 +5,36 @@ using Baillyje.Land;
 
 public class LevelContructor : MonoBehaviour {
 
-	public float tileSize = 1f;
+	public GameObject EdgeContainer;
 
 	private Level level;
 
 	// Use this for initialization
 	void Start () {
 
-		List<Vector2> test = new List<Vector2>();
-		test.Add(new Vector2(4, 2));
-		test.Add(new Vector2(6, 2));
+		List<Vector2> testA = new List<Vector2>();
+		testA.Add(new Vector2(0, 100));
+		testA.Add(new Vector2(200, 100));
 
-		List<Vector2> test2 = new List<Vector2>();
-		test2.Add(new Vector2(4, 0));
-		test2.Add(new Vector2(4, 2));
+		List<Vector2> testB = new List<Vector2>();
+		testB.Add(new Vector2(0, 100));
+		testB.Add(new Vector2(0, 500));
+
+		List<Vector2> testC = new List<Vector2>();
+		testC.Add(new Vector2(0, 500));
+		testC.Add(new Vector2(200, 500));
+
+		List<Vector2> testD = new List<Vector2>();
+		testD.Add(new Vector2(200, 500));
+		testD.Add(new Vector2(200, 100));
 
 		level = new Level();
 
-		List<Edge> testEdges = new List<Edge>();
-		testEdges.Add(new Edge(test, false));
-		testEdges.Add(new Edge(test2, false));
+		List<EdgeData> testEdges = new List<EdgeData>();
+		testEdges.Add(new EdgeData("A", testA, false));
+		testEdges.Add(new EdgeData("B", testB, false));
+		testEdges.Add(new EdgeData("C", testC, false));
+		testEdges.Add(new EdgeData("D", testD, false));
 		level.edges = testEdges;
 
 		DrawLevel();
@@ -43,23 +53,11 @@ public class LevelContructor : MonoBehaviour {
 
 	private void DrawEdges()
 	{
-		foreach(Edge edge in level.edges) {
+		foreach(EdgeData edgeData in level.edges)
+		{
+			Debug.Log ("LevelContructor >> DrawEdge >> " + edgeData.name);
 
-			GameObject edge_go = new GameObject();
-			EdgeCollider2D edgeCollider = edge_go.AddComponent<EdgeCollider2D>() as EdgeCollider2D;
-
-			List<Vector2> pointInGameWorld = new List<Vector2>();
-			foreach(Vector2 point in edge.points)
-			{
-				pointInGameWorld.Add (point * tileSize);
-			}
-
-			Debug.Log (tileSize + " / " + pointInGameWorld.ToArray ()[0].x);
-			edgeCollider.points = pointInGameWorld.ToArray();
-
-			edge_go.transform.parent = this.transform;
+			new Edge (edgeData, EdgeContainer.transform);
 		}
-
-
 	}
 }

@@ -8,7 +8,7 @@ namespace Baillyje.Land
 {
 	public class Level {
 
-		public List<Edge> edges;
+		public List<EdgeData> edges;
 		private List<Tile> tiles;
 		private Vector2 cameraDefaultPosition;
 	}
