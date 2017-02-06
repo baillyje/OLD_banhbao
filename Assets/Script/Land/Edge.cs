@@ -30,14 +30,11 @@ namespace Baillyje.Land
 		private EdgeData data;
 		private Transform parent;
 
-		public Edge(EdgeData pData, Transform pParent) 
+		public void SetData(EdgeData pData, Transform pParent) 
 		{
 			data = pData;
 			parent = pParent;
-		}
-
-		void Initialize()
-		{
+		
 			EdgeCollider2D edgeCollider = this.gameObject.AddComponent<EdgeCollider2D>() as EdgeCollider2D;
 
 			this.gameObject.name = data.name;

@@ -6,6 +6,9 @@ using Baillyje.Land;
 public class LevelContructor : MonoBehaviour {
 
 	public GameObject EdgeContainer;
+	public GameObject TileContainer;
+
+	public Sprite ed_tileSprite;
 
 	private Level level;
 
@@ -49,6 +52,7 @@ public class LevelContructor : MonoBehaviour {
 	{
 		DrawEdges();
 
+		DrawTiles ();
 	}
 
 	private void DrawEdges()
@@ -57,7 +61,51 @@ public class LevelContructor : MonoBehaviour {
 		{
 			Debug.Log ("LevelContructor >> DrawEdge >> " + edgeData.name);
 
-			new Edge (edgeData, EdgeContainer.transform);
+			GameObject edge_go = new GameObject();
+			edge_go.name = edgeData.name;
+			Edge edge = edge_go.AddComponent<Edge> ();
+			edge.SetData(edgeData, EdgeContainer.transform);
 		}
+	}
+
+	private void DrawTiles()
+	{
+		float minX = float.NaN;
+		float minY = float.NaN;
+		float maxX = float.NaN;
+		float maxY = float.NaN;
+
+		foreach(EdgeData edgeData in level.edges)
+		{
+			foreach (Vector2 point in edgeData.points) {
+
+				if (float.IsNaN(minX) || minX > point.x)
+					minX = point.x;
+
+				if (float.IsNaN(maxX) || maxX < point.x)
+					maxX = point.x;
+
+				if (float.IsNaN(minY) || minY > point.y)
+					minY = point.y;
+
+				if (float.IsNaN(maxY) || maxY < point.y)
+					maxY = point.y;
+			}
+		}
+
+		for (int i = 0; i < maxX - minX; i++) {
+			for (int j = 0; j < maxY - minY; j++) {
+
+				GameObject tile_go = new GameObject ();
+				SpriteRenderer tileSprite = tile_go.AddComponent<SpriteRenderer> ();
+				tileSprite.color = new Color (1f, 1f, 1f);
+
+				tileSprite.sprite = ed_tileSprite;
+
+				tile_go.transform.parent = TileContainer.transform;
+			
+			}
+		}
+
 	}
 }
