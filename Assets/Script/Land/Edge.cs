@@ -9,18 +9,15 @@ namespace Baillyje.Land
 		public string name;
 		public List<Vector2> points;
 
-		public bool isCameraBlocker;
-
 		private bool isExit;
 		private Level levelDestination;
 		private Vector2 levelDestinationCoordinate;
 		private Vector2 heroDestinationCoordinate;
 
-		public EdgeData(string pName, List<Vector2> pPoints, bool pIsCameraBlocker)
+		public EdgeData(string pName, List<Vector2> pPoints)
         {
 			name = pName;
 			points = pPoints;
-			isCameraBlocker = pIsCameraBlocker;
         }
 
 	}
@@ -30,14 +27,15 @@ namespace Baillyje.Land
 		private EdgeData data;
 		private Transform parent;
 
-		public void SetData(EdgeData pData, Transform pParent) 
+		public void SetData(EdgeData pData, Transform pParent)
 		{
 			data = pData;
 			parent = pParent;
-		
+
 			EdgeCollider2D edgeCollider = this.gameObject.AddComponent<EdgeCollider2D>() as EdgeCollider2D;
 
 			this.gameObject.name = data.name;
+			this.gameObject.tag = "Wall";
 
 			List<Vector2> pointInGameWorld = new List<Vector2>();
 			foreach(Vector2 point in data.points)

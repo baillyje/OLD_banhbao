@@ -16,28 +16,48 @@ public class LevelContructor : MonoBehaviour {
 	void Start () {
 
 		List<Vector2> testA = new List<Vector2>();
-		testA.Add(new Vector2(0, 100));
-		testA.Add(new Vector2(200, 100));
+		testA.Add(new Vector2(10, 0));
+		testA.Add(new Vector2(50, 0));
+		testA.Add(new Vector2(50, 10));
 
 		List<Vector2> testB = new List<Vector2>();
-		testB.Add(new Vector2(0, 100));
-		testB.Add(new Vector2(0, 500));
+		testB.Add(new Vector2(50, 10));
+		testB.Add(new Vector2(40, 10));
+		testB.Add(new Vector2(40, 20));
+		testB.Add(new Vector2(50, 20));
 
 		List<Vector2> testC = new List<Vector2>();
-		testC.Add(new Vector2(0, 500));
-		testC.Add(new Vector2(200, 500));
+		testC.Add(new Vector2(50, 20));
+		testC.Add(new Vector2(50, 60));
+		testC.Add(new Vector2(40, 60));
+		testC.Add(new Vector2(40, 30));
 
 		List<Vector2> testD = new List<Vector2>();
-		testD.Add(new Vector2(200, 500));
-		testD.Add(new Vector2(200, 100));
+		testD.Add(new Vector2(40, 30));
+		testD.Add(new Vector2(30, 30));
+		testD.Add(new Vector2(30, 60));
+
+		List<Vector2> testE = new List<Vector2>();
+		testE.Add(new Vector2(30, 60));
+		testE.Add(new Vector2(10, 60));
+		testE.Add(new Vector2(10, 30));
+		testE.Add(new Vector2(0, 30));
+		testE.Add(new Vector2(0, 10));
+
+		List<Vector2> testF = new List<Vector2>();
+		testF.Add(new Vector2(0, 10));
+		testF.Add(new Vector2(10, 10));
+		testF.Add(new Vector2(10, 0));
 
 		level = new Level();
 
 		List<EdgeData> testEdges = new List<EdgeData>();
-		testEdges.Add(new EdgeData("A", testA, false));
-		testEdges.Add(new EdgeData("B", testB, false));
-		testEdges.Add(new EdgeData("C", testC, false));
-		testEdges.Add(new EdgeData("D", testD, false));
+		testEdges.Add(new EdgeData("A", testA));
+		testEdges.Add(new EdgeData("B", testB));
+		testEdges.Add(new EdgeData("C", testC));
+		testEdges.Add(new EdgeData("D", testD));
+		testEdges.Add(new EdgeData("E", testE));
+		testEdges.Add(new EdgeData("F", testF));
 		level.edges = testEdges;
 
 		DrawLevel();
