@@ -93,18 +93,34 @@ public class LevelContructor : MonoBehaviour {
 			}
 		}
 
+		bool pairLign = true;
+		bool pairCollumn;
+
 		for (int i = 0; i < maxX - minX; i++) {
+
+			pairCollumn = pairLign;
+
 			for (int j = 0; j < maxY - minY; j++) {
 
 				GameObject tile_go = new GameObject ();
 				SpriteRenderer tileSprite = tile_go.AddComponent<SpriteRenderer> ();
-				tileSprite.color = new Color (1f, 1f, 1f);
+				if(pairCollumn)
+					tileSprite.color = new Color (1f, 1f, 1f);
+				else
+					tileSprite.color = new Color (0f, 0f, 0f);
 
 				tileSprite.sprite = ed_tileSprite;
-
 				tile_go.transform.parent = TileContainer.transform;
-			
+
+				tile_go.transform.position = new Vector3((minX+i)*Common.GetTileSize(), (minY+j)*Common.GetTileSize(), 0);
+
+				Vector3 scale = new Vector3( Common.GetTileSize(), Common.GetTileSize(), 1f );
+				tile_go.transform.localScale = scale;
+
+				pairCollumn = !pairCollumn;
 			}
+
+			pairLign = !pairLign;
 		}
 
 	}
