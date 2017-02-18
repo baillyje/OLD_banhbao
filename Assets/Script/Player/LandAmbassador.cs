@@ -17,12 +17,17 @@ public class LandAmbassador : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter2D(Collision2D coll) {
+	void OnTriggerEnter2D(Collider2D coll) {
+		Debug.Log ("LandAmbassador >> OnTriggerEnter2D >> " + coll.gameObject.name + " / " + coll.gameObject.tag);
+
 		if (coll.gameObject.tag == "Wall")
 			playerMover.isBlocked = true;
 	}
 
-	void OnCollisionExit2D(Collision2D coll) {
+	void OnTriggerExit2D(Collider2D coll) {
+
+		Debug.Log ("LandAmbassador >> OnTriggerExit2D >> " + coll.gameObject.name + " / " + coll.gameObject.tag);
+
 		if (coll.gameObject.tag == "Wall")
 			playerMover.isBlocked = false;
 	}

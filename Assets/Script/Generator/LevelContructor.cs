@@ -123,6 +123,7 @@ public class LevelContructor : MonoBehaviour {
 			for (int j = 0; j < maxY - minY; j++) {
 
 				GameObject tile_go = new GameObject ();
+
 				SpriteRenderer tileSprite = tile_go.AddComponent<SpriteRenderer> ();
 				if(pairCollumn)
 					tileSprite.color = new Color (1f, 1f, 1f);

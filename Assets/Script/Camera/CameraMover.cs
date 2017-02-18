@@ -16,18 +16,38 @@ public class CameraMover : MonoBehaviour {
 	void Start () {
 		tileCreater = area.GetComponent<TileCreater> ();
 		//this.transform.LookAt(target);
+
+
+		Debug.Log ("Screen width >> " + Screen.width);
+		Debug.Log ("Screen height >> " + Screen.height);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//this.transform.position = new Vector3(target.position.x, target.position.y, this.transform.position.z);
 
-		Vector3 point = GetComponent<Camera>().WorldToViewportPoint(target.position);
-		Vector3 delta = target.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z)); //(new Vector3(0.5, 0.5, point.z));
+		Vector3 worldPoint = GetComponent<Camera>().WorldToViewportPoint(target.position);
+		Vector3 localPoint = new Vector3 (target.position.x, target.position.y, target.position.z);
+
+		if (localPoint.x < Screen.width / 200)
+			localPoint.x = Screen.width / 200;
+
+		if (localPoint.y < Screen.height / 200)
+			localPoint.y = Screen.height / 200;
+
+		if (localPoint.y < Screen.height / 200)
+			localPoint.y = Screen.height / 200;
+
+		if (localPoint.y < Screen.height / 200)
+			localPoint.y = Screen.height / 200;
+
+		Vector3 delta = localPoint - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f, worldPoint.z)); //(new Vector3(0.5, 0.5, point.z));
 		Vector3 destination = transform.position + delta;
 		transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
 
 		//TODO: Modify this in order to limit camara move to feet the area limits.
+
+
 
 		//Debug.Log(tileCreater.upLimit + " " + tileCreater.downLimit + " " + tileCreater.leftLimit + " " + tileCreater.rightLimit);
 

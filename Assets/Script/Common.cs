@@ -6,6 +6,6 @@ public class Common {
 
 	public static float GetTileSize()
 	{
-		return 2.0f;
+		return 1.0f;
 	}
 }

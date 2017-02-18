@@ -45,6 +45,7 @@ namespace Baillyje.Land
 
 			Debug.Log (Common.GetTileSize() + " / " + pointInGameWorld.ToArray ()[0].x);
 			edgeCollider.points = pointInGameWorld.ToArray();
+			edgeCollider.isTrigger = true;
 
 			this.transform.parent = parent.transform;
 
