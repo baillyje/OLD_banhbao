@@ -21,7 +21,7 @@ public class CameraMover : MonoBehaviour {
 		Debug.Log ("Screen width >> " + Screen.width);
 		Debug.Log ("Screen height >> " + Screen.height);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		//this.transform.position = new Vector3(target.position.x, target.position.y, this.transform.position.z);
@@ -29,8 +29,8 @@ public class CameraMover : MonoBehaviour {
 		Vector3 worldPoint = GetComponent<Camera>().WorldToViewportPoint(target.position);
 		Vector3 localPoint = new Vector3 (target.position.x, target.position.y, target.position.z);
 
-		Debug.Log (localPoint.ToString());
-		Debug.Log (Screen.width + "x" + Screen.height);
+	//	Debug.Log (localPoint.ToString());
+	//	Debug.Log (Screen.width + "x" + Screen.height);
 
 		if (localPoint.x < 12.8f)
 			localPoint.x = 12.8f;

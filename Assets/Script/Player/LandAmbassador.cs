@@ -17,6 +17,13 @@ public class LandAmbassador : MonoBehaviour {
 
 	}
 
+
+	// is trigguer for object in collision with Player
+	void OnCollisionEnter2D(Collision2D coll) {
+		Debug.Log("OH LALALALALA");
+	}
+
+	// is trigger for player if the object have "is trigger enabled"
 	void OnTriggerEnter2D(Collider2D coll) {
 		Debug.Log ("LandAmbassador >> OnTriggerEnter2D >> " + coll.gameObject.name + " / " + coll.gameObject.tag);
 

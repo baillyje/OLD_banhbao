@@ -121,18 +121,18 @@ public class Mover : MonoBehaviour {
 	}
 
 	public void OrientUp() {
-		gameObject.transform.eulerAngles = Vector3.forward * 0;
+		//gameObject.transform.eulerAngles = Vector3.forward * 0;
 	}
 
 	public void OrientDown() {
-		gameObject.transform.eulerAngles = Vector3.forward * 180;
+		//gameObject.transform.eulerAngles = Vector3.forward * 180;
 	}
 
 	public void OrientLeft() {
-		gameObject.transform.eulerAngles = Vector3.forward * 90;
+		//gameObject.transform.eulerAngles = Vector3.forward * 90;
 	}
 
 	public void OrientRight() {
-		gameObject.transform.eulerAngles = Vector3.forward * 270;
+		//gameObject.transform.eulerAngles = Vector3.forward * 270;
 	}
 }

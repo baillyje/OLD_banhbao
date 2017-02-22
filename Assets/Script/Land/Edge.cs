@@ -45,11 +45,15 @@ namespace Baillyje.Land
 
 			Debug.Log (Common.GetTileSize() + " / " + pointInGameWorld.ToArray ()[0].x);
 			edgeCollider.points = pointInGameWorld.ToArray();
-			edgeCollider.isTrigger = true;
+		//	edgeCollider.isTrigger = true;
 
 			this.transform.parent = parent.transform;
 
 			Debug.Log ("Edge >> Initialize >> " + data.name);
+		}
+
+		void OnCollisionEnter2D(Collision2D coll) {
+			Debug.Log("The player touchs me ! O_O");
 		}
 
 	}
